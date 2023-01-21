@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in">Sign in</string>
+    <string name="email">Email *</string>
+    <string name="incorrect_password">The password you entered is not correct. Try again.</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="app_info_title">Shoe Store App is helping people to buy their shoes</string>
+    <string name="go_next">Go next</string>
+    <string name="app_info_description">discover and buy new shoe online</string>
+    <string name="instruction">Instruction</string>
+    <string name="details_info">a place to buy any shoes</string>
+    <string name="go_to_store">Go To Store</string>
+    <string name="password">Password *</string>
+    <string name="add">add</string>
+    <string name="shoe_name">Shoe Name</string>
+    <string name="company">Company</string>
+    <string name="description">Description</string>
+    <string name="cancel">Cancel</string>
+    <string name="shoe_size">Shoe Size</string>
+    <string name="logout">logout</string>
+    <string name="just_a_shoe">Just a shoe</string>
+    <string name="makeText">the shoe name is %1$s!\n
+        the shoe company is %2$s!\n
+        the shoe Size is %3$s!\n
+        the shoe description is %4$s!\n</string>
+</resources>
