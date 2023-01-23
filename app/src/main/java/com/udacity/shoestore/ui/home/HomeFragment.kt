@@ -77,7 +77,7 @@ class HomeFragment : FragmentX<FragmentHomeBinding>(R.layout.fragment_home) {
             // do something
             binding.ll.removeAllViews()
             for (shoe in shoeList) {
-                addViewToViewGroup(makeTextView(shoe), binding.ll)
+                addShoeToList(shoe)
             }
         }
     }

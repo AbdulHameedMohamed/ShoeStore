@@ -32,11 +32,11 @@ class LoginFragment : Fragment() {
             btnSignIn.setOnClickListener {
                 // For Loop And Check
                 if(etEmail.text.isBlank()|| etPassword.text.isBlank()) {
+                    context?.showToast("Enter All Fields Ya Nagm", Toast.LENGTH_LONG)
+                } else {
                     val action =
                         LoginFragmentDirections.actionLoginFragmentToOnBoardingFragment()
                     requireView().findNavController().navigate(action)
-                } else {
-                    context?.showToast("Enter All Fields Ya Nagm", Toast.LENGTH_LONG)
                 }
             }
             tvForgetPassword.setOnClickListener {
