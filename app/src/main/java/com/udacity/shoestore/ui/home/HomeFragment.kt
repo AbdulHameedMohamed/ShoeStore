@@ -9,19 +9,17 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.onNavDestinationSelected
-import com.udacity.shoestore.ui.base.FragmentX
+import com.udacity.shoestore.ui.base.BaseFragment
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentHomeBinding
 import com.udacity.shoestore.models.Shoe
 
-class HomeFragment : FragmentX<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val mainViewModel: MainViewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+        ViewModelProvider(requireActivity())[MainViewModel::class.java]
     }
-    private val args: HomeFragmentArgs by navArgs()
 
     override fun onStart() {
         super.onStart()
@@ -30,17 +28,9 @@ class HomeFragment : FragmentX<FragmentHomeBinding>(R.layout.fragment_home) {
 
         binding.mainViewModel = mainViewModel
 
-        checkForArgs()
-
         observeLiveData()
 
         setHasOptionsMenu(true)
-    }
-
-    private fun checkForArgs() {
-        args.shoeArgs?.let {
-            mainViewModel.addShoe(shoe = it)
-        }
     }
 
     private fun observeLiveData() {
@@ -62,7 +52,7 @@ class HomeFragment : FragmentX<FragmentHomeBinding>(R.layout.fragment_home) {
                 navigateToDetailsScreen(it)
             }
         }
-//
+
 //        mainViewModel.newShoe.observe(viewLifecycleOwner) { shoe ->
 //            addShoeToList(shoe)
 //        }

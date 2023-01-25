@@ -1,41 +1,30 @@
 package com.udacity.shoestore.ui.details
 
-import android.widget.Toast
-import androidx.core.text.isDigitsOnly
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.udacity.shoestore.ui.base.FragmentX
+import com.udacity.shoestore.ui.base.BaseFragment
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentDetailsScreenBinding
-import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.ui.home.MainViewModel
 
-class DetailsFragment : FragmentX<FragmentDetailsScreenBinding>(R.layout.fragment_details_screen) {
+class DetailsFragment : BaseFragment<FragmentDetailsScreenBinding>(R.layout.fragment_details_screen) {
+    private val mainViewModel: MainViewModel by lazy {
+        ViewModelProvider(requireActivity())[MainViewModel::class.java]
+    }
 
     override fun onStart() {
         super.onStart()
+
+        binding.mainViewModel = mainViewModel
 
         // binding variable can be accessed from FragmentX
         binding.apply {
             btnAdd.setOnClickListener {
                 // For Loop And Check
-                val name= etName.text.toString()
-                val company= etCompany.text.toString()
-                val shoeSize= etShoeSize.text.toString()
-                val description= etDescription.text.toString()
-                if (name.isBlank()|| company.isBlank()
-                    || shoeSize.isBlank()|| description.isBlank()) {
-                    Toast.makeText(context, "Enter All Fields To Make New Shoe", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-
-                if(!shoeSize.isDigitsOnly()) {
-                    Toast.makeText(context, "Enter A Valid Shoe Size", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                val shoe= Shoe(name= name, size = shoeSize.toDouble(), company= company, description= description)
+                mainViewModel?.addShoe()
 
                 val action =
                     DetailsFragmentDirections.actionDetailsScreenToHomeFragment()
-                action.shoeArgs= shoe
                 requireView().findNavController().navigate(action)
             }
         }

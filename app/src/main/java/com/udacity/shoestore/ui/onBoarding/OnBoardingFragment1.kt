@@ -3,9 +3,9 @@ package com.udacity.shoestore.ui.onBoarding
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentOnBoardingBinding
-import com.udacity.shoestore.ui.base.FragmentX
+import com.udacity.shoestore.ui.base.BaseFragment
 
-class OnBoardingFragment1 : FragmentX<FragmentOnBoardingBinding>(R.layout.fragment_on_boarding) {
+class OnBoardingFragment1 : BaseFragment<FragmentOnBoardingBinding>(R.layout.fragment_on_boarding) {
 
     override fun onStart() {
         super.onStart()

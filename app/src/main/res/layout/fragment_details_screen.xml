@@ -1,8 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- For Data Binding -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.udacity.shoestore.ui.home.MainViewModel" />
+    </data>
+
+    <!-- for allows to position and size widgets in a flexible way.-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +29,9 @@
             android:id="@+id/et_name"
             style="@style/st_et"
             android:inputType="text"
+            android:autofillHints="name"
+            android:hint="@string/enter_shoe_name"
+            android:text="@={mainViewModel.shoe.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -36,6 +47,9 @@
             android:id="@+id/et_company"
             style="@style/st_et"
             android:inputType="text"
+            android:autofillHints="name"
+            android:hint="@string/enter_shoe_company"
+            android:text="@={mainViewModel.shoe.company}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_company"
             app:layout_constraintTop_toBottomOf="@+id/tv_company" />
@@ -50,7 +64,9 @@
         <EditText
             android:id="@+id/et_shoe_size"
             style="@style/st_et"
+            android:hint="@string/enter_shoe_size"
             android:inputType="numberDecimal"
+            android:text="@={``+mainViewModel.shoe.size}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_shoe_size"
             app:layout_constraintTop_toBottomOf="@+id/tv_shoe_size" />
@@ -65,7 +81,10 @@
         <EditText
             android:id="@+id/et_description"
             style="@style/st_et"
+            android:autofillHints="name"
+            android:hint="@string/enter_shoe_description"
             android:inputType="text"
+            android:text="@={mainViewModel.shoe.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_description"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
@@ -74,14 +93,13 @@
             android:id="@+id/btn_add"
             android:layout_width="150dp"
             android:layout_height="@dimen/btn_height"
+            android:layout_marginBottom="@dimen/fl_v_margin"
             android:background="@drawable/btn_background"
             android:text="@string/add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="@dimen/fl_v_margin"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btn_cancel"
@@ -90,10 +108,10 @@
             android:background="@drawable/btn_cancel_background"
             android:text="@string/cancel"
             app:layout_constraintBottom_toBottomOf="@id/btn_add"
-            app:layout_constraintTop_toTopOf="@id/btn_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toEndOf="@+id/btn_add" />
+            app:layout_constraintStart_toEndOf="@+id/btn_add"
+            app:layout_constraintTop_toTopOf="@id/btn_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
